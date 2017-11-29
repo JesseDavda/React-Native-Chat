@@ -8,13 +8,17 @@ export default class MessageBar extends Component {
     constructor() {
         super();
         this.state = {
-            value: ''
+            inputVal: ''
         }
     }
 
-    sendMessage(value) {
+    sendMessage() {
+        var value = this.state.inputVal;
         console.log("Value: " + value);
         socket.emit("send message", value);
+        this.setState({
+            inputVal: ''
+        });
     }
 
     render() {
@@ -22,8 +26,10 @@ export default class MessageBar extends Component {
             <View style={styles.bottomBar}>
                     <TextInput style={styles.messageInput}
                         underlineColorAndroid='transparent'
+                        value={this.state.inputVal}
+                        onChangeText={(value) => this.setState({inputVal: value})}
                         placeholder="Enter Message..."
-                        onSubmitEditing={(value) => this.sendMessage(value)}
+                        onSubmitEditing={(event) => this.sendMessage(event.nativeEvent.text)}
                     />
             </View>
         );
@@ -44,9 +50,9 @@ const styles = StyleSheet.create({
         height: '100%',
         borderRadius: 5,
         borderWidth: 3,
-        borderColor: '#000',
+        borderColor: 'lightseagreen',
         marginLeft: '5%',
-        marginBottom: '10%',
+        marginBottom: '15%',
         paddingLeft: '5%'
     }
 });

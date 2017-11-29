@@ -10,7 +10,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
             <Header />
-            <ChatWindow />
+            <ChatWindow sytles={styles.chatWindow} />
             <MessageBar />
       </View>
     );
@@ -23,6 +23,9 @@ const styles = StyleSheet.create({
       height: '100%',
       backgroundColor: '#f4f4f4',
       alignItems: 'center'
+  },
+  chatWindow: {
+      width: '100%',
   }
 });
 
