@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {AppRegistry, StyleSheet, Text, View, TextInput, KeyboardAvoidingView} from 'react-native';
 import SocketIOClient from 'socket.io-client';
 
-const socket = SocketIOClient('http://185.177.21.13:3000/');
+const socket = SocketIOClient('http://185.177.21.13:3000');
 
 export default class MessageBar extends Component {
     constructor() {
@@ -14,7 +14,6 @@ export default class MessageBar extends Component {
 
     sendMessage(value) {
         console.log("Value: " + value);
-
         socket.emit("send message", value);
     }
 

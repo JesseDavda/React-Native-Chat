@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, ScrollView, ListView } from 'react-native';
 import SocketIOClient from 'socket.io-client';
 
-const socket = SocketIOClient('http://localhost:3000');
+const socket = SocketIOClient('http://185.177.21.13:3000');
 
 export default class ChatWindow extends Component {
     constructor(props) {
@@ -12,6 +12,8 @@ export default class ChatWindow extends Component {
             {message: "Welcome to Chat!"},
             {message: "Enter your message below: "}
         ];
+
+        this.socket = socket;
 
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
