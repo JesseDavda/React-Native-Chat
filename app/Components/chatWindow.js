@@ -12,7 +12,7 @@ export default class ChatWindow extends Component {
             {message: "Welcome to Chat!"},
             {message: "Enter your message below: "}
         ];
-        
+
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
         this.state = {
