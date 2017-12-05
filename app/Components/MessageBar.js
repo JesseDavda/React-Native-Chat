@@ -23,7 +23,7 @@ export default class MessageBar extends Component {
 
     render() {
         return(
-            <View style={styles.bottomBar}>
+            <KeyboardAvoidingView behaviour="padding" style={styles.bottomBar}>
                     <TextInput style={styles.messageInput}
                         underlineColorAndroid='transparent'
                         value={this.state.inputVal}
@@ -31,7 +31,7 @@ export default class MessageBar extends Component {
                         placeholder="Enter Message..."
                         onSubmitEditing={(event) => this.sendMessage(event.nativeEvent.text)}
                     />
-            </View>
+            </KeyboardAvoidingView>
         );
     }
 }

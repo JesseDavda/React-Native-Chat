@@ -9,10 +9,11 @@ export default class ChatWindow extends Component {
         super();
 
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-
+        var allMessages = ds.cloneWithRows([{message: "Hello welcome to chat"}]);
 
         this.state = {
-            messageSource: ds
+            messageSource: allMessages,
+            allMessages: allMessages
         }
     }
 
@@ -23,6 +24,13 @@ export default class ChatWindow extends Component {
     getMessage(message, sectionId, rowId, highlightRow) {
         socket.on('new message', (message) => {
             var newMessage = {message: message};
+
+            var messageData = [];
+            messageData = this.state.allMessages;
+            console.log(messageData);
+            messageData.push(newMessage);
+            console.log("added item: " + messageData);
+
             this.setState({
                 messageSource: this.state.messageSource.cloneWithRows(newMessage)
             });
